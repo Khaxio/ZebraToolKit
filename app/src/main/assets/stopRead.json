@@ -1,0 +1,5 @@
+{
+    "command": "stop",
+    "command_id": "123",
+    "payload": {}
+}

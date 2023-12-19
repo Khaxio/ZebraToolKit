@@ -1,0 +1,37 @@
+{
+    "payload": {
+        "antennaStopCondition": {
+            "type": "DURATION",
+            "value": 50
+        },
+        "antennas": [
+            1,
+            2
+        ],
+        "linkProfile": 913,
+        "query": {
+            "sel": "ALL",
+            "session": "S1",
+            "tagPopulation": 20,
+            "target": "A"
+        },
+        "reportFilter": {
+            "duration": 0,
+            "type": "PER_ANTENNA"
+        },
+        "tagMetaData": [
+            "RSSI",
+            "PHASE",
+            "SEEN_COUNT",
+            "ANTENNA",
+            "CHANNEL",
+            "PC",
+            "XPC",
+            "CRC"
+        ],
+        "transmitPower": 12,
+        "type": "CUSTOM"
+    },
+    "command": "set_mode",
+    "command_id": "1234"
+}
