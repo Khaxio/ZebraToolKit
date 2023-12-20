@@ -6,27 +6,38 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import com.example.zebratoolkit.data.IOTDataViewModel
 import com.example.zebratoolkit.ui.MqttHandler
 import com.example.zebratoolkit.ui.Topics_IOT
 import java.io.IOException
 
-
 @Composable
-fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
+fun IOTScreen(
+    navHostController: NavHostController,
+    mqttClient: MqttHandler,
+    iotDataViewModel: IOTDataViewModel
+) {
+    val dataStringTopic: String by iotDataViewModel.data.observeAsState("/apps/ZebraFX_Reader/data")
+    val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("/apps/ZebraFX_Reader/mgmt/commands")
     var localContext = LocalContext.current
     var topicsIOT = Topics_IOT()
 
-    Column(modifier = Modifier
-        .fillMaxSize(),
+    Column(
+        modifier = Modifier
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center) {
+        verticalArrangement = Arrangement.Center
+    ) {
         Text(text = "MQTT Client")
         Button(onClick = {
-            mqttClient.connect(localContext) }) {
+            mqttClient.connect(localContext)
+        }) {
             Text("Connect")
         }
         Button(onClick = {
@@ -35,8 +46,8 @@ fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
             Text("Disconnect")
         }
         Button(onClick = {
-            mqttClient.subscribe("/apps/ZebraFX_Reader/data",2)
-
+            // mqttClient.subscribe("/apps/ZebraFX_Reader/data",2)
+            mqttClient.subscribe(dataStringTopic, 2)
         }) {
             Text("Subscribe")
         }
@@ -57,10 +68,12 @@ fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
 
             }
             mqttClient.publish(
-                topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                msg= jsonString,
+                // topic ="/apps/ZebraFX_Reader/mgmt/commands",
+                topic = managementsCommands,
+                msg = jsonString,
                 qos = 0,
-                retained = false)
+                retained = false
+            )
 
         }
         ) {
@@ -78,10 +91,12 @@ fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
 
             }
             mqttClient.publish(
-                topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                msg= jsonString,
+                // topic ="/apps/ZebraFX_Reader/mgmt/commands",
+                topic = managementsCommands,
+                msg = jsonString,
                 qos = 0,
-                retained = false)
+                retained = false
+            )
 
         }
         ) {
@@ -99,10 +114,12 @@ fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
 
             }
             mqttClient.publish(
-                topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                msg= jsonString,
+                // topic ="/apps/ZebraFX_Reader/mgmt/commands",
+                topic = managementsCommands,
+                msg = jsonString,
                 qos = 0,
-                retained = false)
+                retained = false
+            )
 
         }
         ) {
@@ -120,10 +137,12 @@ fun IOTScreen(navHostController:NavHostController,mqttClient: MqttHandler){
 
             }
             mqttClient.publish(
-                topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                msg= jsonString,
+                //topic ="/apps/ZebraFX_Reader/mgmt/commands",
+                topic = managementsCommands,
+                msg = jsonString,
                 qos = 0,
-                retained = false)
+                retained = false
+            )
 
         }
         ) {

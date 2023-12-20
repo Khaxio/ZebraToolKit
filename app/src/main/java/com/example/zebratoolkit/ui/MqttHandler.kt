@@ -23,11 +23,7 @@ class MqttHandler {
         //esto de abajo funciona
         //val serverURI = "tcp://broker.hivemq.com:1883"
 
-        val serverURI = "tcp://192.168.1.102:10883"
-
-
-
-
+        val serverURI = "tcp://192.168.50.153:10883"
 
         mqttClient = MqttAndroidClient(context, serverURI, "kotlin_client")
         mqttClient.setCallback(object : MqttCallback {

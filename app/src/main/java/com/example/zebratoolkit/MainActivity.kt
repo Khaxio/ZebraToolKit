@@ -1,19 +1,15 @@
 package com.example.zebratoolkit
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.navigation.compose.rememberNavController
-import com.example.zebratoolkit.navigation.NavigationHost
-import com.example.zebratoolkit.ui.MqttHandler
-import com.example.zebratoolkit.ui.MyMainScreen
-
-
+import com.example.zebratoolkit.data.IOTDataViewModel
+import com.example.zebratoolkit.screens.IOTConfigSettings
 import com.example.zebratoolkit.ui.theme.ZebraToolKitTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +22,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyMainScreen()
+                    //MyMainScreen()
+                    IOTConfigSettings(iotDataViewModel = IOTDataViewModel())
                 }
             }
         }

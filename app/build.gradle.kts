@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.zebratoolkit"
         minSdk = 30
-        targetSdk = 34
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 
@@ -53,7 +53,7 @@ dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
-    implementation("androidx.activity:activity-compose:1.8.1")
+    implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
@@ -67,18 +67,21 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation ("androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha13")
-    implementation("androidx.navigation:navigation-compose:2.7.5")
-    implementation ("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
-    implementation ("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("androidx.constraintlayout:constraintlayout-compose-android:1.1.0-alpha13")
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
+    implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
 
     // esto se añade debido a un error de no soprtar broadcasta manager v4 el paho
-    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    //implementation ("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
+
     //Gson converter for msg payload
-    implementation ("com.google.code.gson:gson:2.10.1")
-    implementation ("androidx.lifecycle:lifecycle-livedata:2.2.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    //implementation ("androidx.compose.runtime:runtime-livedata:2.7.6")
+    implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
 
 
 }
