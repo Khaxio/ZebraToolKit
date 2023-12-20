@@ -8,8 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.zebratoolkit.data.IOTDataViewModel
-import com.example.zebratoolkit.screens.IOTConfigSettings
+import com.example.zebratoolkit.ui.MyMainScreen
 import com.example.zebratoolkit.ui.theme.ZebraToolKitTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,8 +21,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //MyMainScreen()
-                    IOTConfigSettings(iotDataViewModel = IOTDataViewModel())
+                    MyMainScreen()
+                    //IOTConfigSettings(iotDataViewModel = IOTDataViewModel())
                 }
             }
         }

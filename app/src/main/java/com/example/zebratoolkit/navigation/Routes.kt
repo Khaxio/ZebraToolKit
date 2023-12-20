@@ -25,5 +25,13 @@ sealed class Routes(
         selectedIcon = Icons.Outlined.Home
     )
 
+    object IOTCONFIGSETTINGS : Routes(
+        route = "iotconfigsettings",
+        title = "IOT Config Setting",
+        unSelectedIcon = Icons.Filled.Home,
+        selectedIcon = Icons.Outlined.Home
+
+    )
+
 
 }

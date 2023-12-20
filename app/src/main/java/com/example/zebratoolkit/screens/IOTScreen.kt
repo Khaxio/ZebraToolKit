@@ -24,7 +24,8 @@ fun IOTScreen(
     iotDataViewModel: IOTDataViewModel
 ) {
     val dataStringTopic: String by iotDataViewModel.data.observeAsState("/apps/ZebraFX_Reader/data")
-    val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("/apps/ZebraFX_Reader/mgmt/commands")
+    //val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("/apps/ZebraFX_Reader/mgmt/commands")
+    val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("")
     var localContext = LocalContext.current
     var topicsIOT = Topics_IOT()
 
@@ -35,6 +36,7 @@ fun IOTScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(text = "MQTT Client")
+
         Button(onClick = {
             mqttClient.connect(localContext)
         }) {

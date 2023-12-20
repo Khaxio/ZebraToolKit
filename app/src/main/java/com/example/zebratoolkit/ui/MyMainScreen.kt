@@ -34,6 +34,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
+import com.example.zebratoolkit.data.IOTDataViewModel
 import com.example.zebratoolkit.navigation.NavigationHost
 import com.example.zebratoolkit.navigation.Routes
 import kotlinx.coroutines.launch
@@ -42,6 +43,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyMainScreen() {
+    val iotDataViewModel = IOTDataViewModel()
     val navController = rememberNavController()
     val myDrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val items: List<Routes> = listOf(Routes.IOT, Routes.RESTAPI)
@@ -121,6 +123,9 @@ fun MyMainScreen() {
                     },
                     actions = {
                         IconButton(onClick = {
+
+                            // navController.navigate(Routes.RESTAPI.route)
+                            navController.navigate(Routes.IOTCONFIGSETTINGS.route)
                         }) {
                             Icon(
                                 imageVector = Icons.Default.Settings,

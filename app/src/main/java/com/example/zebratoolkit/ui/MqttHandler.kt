@@ -2,6 +2,7 @@ package com.example.zebratoolkit.ui
 
 import android.content.Context
 import android.util.Log
+import com.example.zebratoolkit.data.IOTDataViewModel
 import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.IMqttActionListener
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
@@ -11,20 +12,25 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions
 import org.eclipse.paho.client.mqttv3.MqttException
 import org.eclipse.paho.client.mqttv3.MqttMessage
 
-class MqttHandler {
+class MqttHandler() {
     private lateinit var mqttClient: MqttAndroidClient
+    var iotDataViewModel = IOTDataViewModel()
+
     // TAG
     companion object {
         const val TAG = "AndroidMqttClient"
     }
 
     fun connect(context: Context) {
+
         //Only 5 protocol supported: tcp/ssl/local/ws/wss. obligatorio declararlos
         //esto de abajo funciona
         //val serverURI = "tcp://broker.hivemq.com:1883"
 
-        val serverURI = "tcp://192.168.50.153:10883"
+        // val serverURI = "tcp://192.168.50.153:10883"
 
+        val serverURI = "tcp://${iotDataViewModel.serverUri.value}"
+        Log.d(serverURI, "serverURI")
         mqttClient = MqttAndroidClient(context, serverURI, "kotlin_client")
         mqttClient.setCallback(object : MqttCallback {
             override fun messageArrived(topic: String?, message: MqttMessage?) {

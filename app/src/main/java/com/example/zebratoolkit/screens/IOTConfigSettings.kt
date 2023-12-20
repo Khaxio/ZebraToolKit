@@ -23,29 +23,39 @@ import com.example.zebratoolkit.data.IOTDataViewModel
 fun IOTConfigSettings(iotDataViewModel: IOTDataViewModel) {
 
     val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("")
+    val serverIP: String by iotDataViewModel.serverUri.observeAsState("")
     var myTexto by rememberSaveable { mutableStateOf("") }
 
     Box(modifier = Modifier.fillMaxSize()) {
-        //   iotDataViewModel.onMgmtCommandsChanged("hola")
+
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceAround
         ) {
+
             OutlinedTextField(
+                value = serverIP,
+                onValueChange = { iotDataViewModel.onServerUriChanged(it) },
+                label = { Text(text = "MQTT Server IP") })
+
+            OutlinedTextField(
+                value = managementsCommands,
+                onValueChange = { iotDataViewModel.onMgmtCommandsChanged(it) },
+                label = { Text(text = "Management Commands") })
+
+
+            /*OutlinedTextField(
                 value = myTexto,
                 onValueChange = { myTexto = it },
                 label = { Text(text = "Management Events") })
             OutlinedTextField(
-                value = managementsCommands,
-                onValueChange = { iotDataViewModel.onMgmtCommandsChanged(it) },
+                value = "d",
+                onValueChange = {  },
                 label = { Text(text = "Tag Data Events") })
+
             OutlinedTextField(
                 value = managementsCommands,
-                onValueChange = {},
-                label = { Text(text = "Management Commands") })
-            OutlinedTextField(
-                value = "xxxxxx",
                 onValueChange = {},
                 label = { Text(text = "Management Response") })
             OutlinedTextField(
@@ -55,7 +65,7 @@ fun IOTConfigSettings(iotDataViewModel: IOTDataViewModel) {
             OutlinedTextField(
                 value = "xxxxxx",
                 onValueChange = {},
-                label = { Text(text = "Control Response") })
+                label = { Text(text = "Control Response") })*/
         }
     }
 }

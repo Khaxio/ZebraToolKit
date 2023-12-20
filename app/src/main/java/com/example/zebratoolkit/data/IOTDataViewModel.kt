@@ -17,9 +17,13 @@ class IOTDataViewModel : ViewModel() {
     val mgmtCommands: LiveData<String> = _mgmtCommands
 
 
+    fun onServerUriChanged(serverUri: String) {
+        _serverUri.value = serverUri
+    }
+
     fun onMgmtCommandsChanged(mgmtCommands: String) {
         _mgmtCommands.value = mgmtCommands
-
     }
+
 
 }
