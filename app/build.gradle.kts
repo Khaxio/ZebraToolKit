@@ -83,5 +83,8 @@ dependencies {
     //implementation ("androidx.compose.runtime:runtime-livedata:2.7.6")
     implementation("androidx.compose.runtime:runtime-livedata:1.5.4")
 
+    //for DataStore.
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 
 }
