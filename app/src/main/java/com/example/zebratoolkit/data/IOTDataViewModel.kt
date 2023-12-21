@@ -1,9 +1,6 @@
 package com.example.zebratoolkit.data
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
+/*
 
 class IOTDataViewModel : ViewModel() {
 
@@ -26,4 +23,4 @@ class IOTDataViewModel : ViewModel() {
     }
 
 
-}
+}*/

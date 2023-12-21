@@ -29,7 +29,7 @@ class StoreIOTSettings(private val context: Context) {
     //to get the server ip&port
     val getServerIPPort: Flow<String?> = context.dataStore.data
         .map { preferences ->
-            preferences[SERVER_IP_PORT_KEY]
+            preferences[SERVER_IP_PORT_KEY] ?: ""
         }
 
     //to set the server ip&Port
@@ -43,7 +43,7 @@ class StoreIOTSettings(private val context: Context) {
     //to get the Topic Management Commands
     val getTopicMgmntCmmnds: Flow<String?> = context.dataStore.data
         .map { preferences ->
-            preferences[TOPIC_MGMT_CMMNDS]
+            preferences[TOPIC_MGMT_CMMNDS] ?: ""
         }
 
     //to set Topico Management Commands

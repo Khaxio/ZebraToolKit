@@ -7,13 +7,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import com.example.zebratoolkit.data.IOTDataViewModel
 import com.example.zebratoolkit.datastore.StoreIOTSettings
 import com.example.zebratoolkit.ui.MqttHandler
 import com.example.zebratoolkit.ui.Topics_IOT
@@ -23,12 +20,12 @@ import java.io.IOException
 fun IOTScreen(
     navHostController: NavHostController,
     mqttClient: MqttHandler,
-    iotDataViewModel: IOTDataViewModel
+
 ) {
     //toda esta parte es de viewmodelo, lo quitaremos
-    val dataStringTopic: String by iotDataViewModel.data.observeAsState("/apps/ZebraFX_Reader/data")
+  /*  val dataStringTopic: String by iotDataViewModel.data.observeAsState("/apps/ZebraFX_Reader/data")
     //val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("/apps/ZebraFX_Reader/mgmt/commands")
-    val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("")
+    val managementsCommands: String by iotDataViewModel.mgmtCommands.observeAsState("")*/
 
 
     var context = LocalContext.current
@@ -59,7 +56,7 @@ fun IOTScreen(
         }
         Button(onClick = {
             // mqttClient.subscribe("/apps/ZebraFX_Reader/data",2)
-            mqttClient.subscribe(dataStringTopic, 2)
+            // mqttClient.subscribe(dataStringTopic, 2)
         }) {
             Text("Subscribe")
         }
@@ -82,7 +79,7 @@ fun IOTScreen(
             }
             mqttClient.publish(
                 // topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                topic = managementsCommands,
+                topic = topicMgmntCmmnds.value!!,
                 msg = jsonString,
                 qos = 0,
                 retained = false
@@ -106,7 +103,7 @@ fun IOTScreen(
             }
             mqttClient.publish(
                 // topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                topic = managementsCommands,
+                topic = topicMgmntCmmnds.value!!,
                 msg = jsonString,
                 qos = 0,
                 retained = false
@@ -130,7 +127,7 @@ fun IOTScreen(
             }
             mqttClient.publish(
                 // topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                topic = managementsCommands,
+                topic = topicMgmntCmmnds.value!!,
                 msg = jsonString,
                 qos = 0,
                 retained = false
@@ -154,7 +151,7 @@ fun IOTScreen(
             }
             mqttClient.publish(
                 //topic ="/apps/ZebraFX_Reader/mgmt/commands",
-                topic = managementsCommands,
+                topic = topicMgmntCmmnds.value!!,
                 msg = jsonString,
                 qos = 0,
                 retained = false
